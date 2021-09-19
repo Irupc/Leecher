@@ -25,8 +25,8 @@ async def save_thumb_nail(client, message):
         # https://stackoverflow.com/a/21669827/4723940
         Image.open(downloaded_file_name).convert("RGB").save(downloaded_file_name)
         metadata = extractMetadata(createParser(downloaded_file_name))
-        height = 0
-        width = 0
+        height = 510
+        width = 682
         if metadata.has("height"):
             height = metadata.get("height")
         if metadata.has("width"):
