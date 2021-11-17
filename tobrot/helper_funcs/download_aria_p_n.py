@@ -256,7 +256,7 @@ async def call_apropriate_function(
             print(to_upload_file)
             print("^^^UPLOAD FILE^^^")
             to_upload_file = to_upload_file.replace("/app/","").replace("/app","").replace("app/","")
-            print("--> UPLOAD FILE MOD -->" to_upload_file)
+            print(f"--> UPLOAD FILE MOD --> {to_upload_file}")
             if os.path.isfile(to_upload_file):
                 os.rename(to_upload_file,
                           f"{CUSTOM_FILE_NAME}{to_upload_file}")
