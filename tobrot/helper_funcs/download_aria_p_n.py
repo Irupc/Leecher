@@ -259,15 +259,15 @@ async def call_apropriate_function(
         if CUSTOM_FILE_NAME:
             print(to_upload_file)
             print("^^^UPLOAD FILE^^^")
-            randletter = random.choice(string.ascii_letters)
-            fName_mod = '.'.join(word for word in to_upload_file.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
-            to_upload_file = fName_mod.replace("PSA", randletter).replace("YIFY", randletter).replace("GalaxyRG", randletter).replace("[YTS.LT]", randletter).replace("[YTS.MX]", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("1tamilmv", randletter).replace("tamilmv", randletter).replace("x265lk", randletter)
             to_upload_file = to_upload_file.replace("/app/","").replace("/app","").replace("app/","")
             print(f"--> UPLOAD FILE MOD --> {to_upload_file}")
             if os.path.isfile(to_upload_file):
+                randletter = random.choice(string.ascii_letters)
+                fName_mod = '.'.join(word for word in to_upload_file.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
+                fName_mod = fName_mod.replace("PSA", randletter).replace("YIFY", randletter).replace("GalaxyRG", randletter).replace("[YTS.LT]", randletter).replace("[YTS.MX]", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("1tamilmv", randletter).replace("tamilmv", randletter).replace("x265lk", randletter)
                 os.rename(to_upload_file,
-                          f"{CUSTOM_FILE_NAME}{to_upload_file}")
-                to_upload_file = f"{CUSTOM_FILE_NAME}{to_upload_file}"
+                          f"{CUSTOM_FILE_NAME}{fName_mod}")
+                to_upload_file = f"{CUSTOM_FILE_NAME}{fName_mod}"
                 print("---UPLOAD FILE---")
                 print(to_upload_file)
             else:
