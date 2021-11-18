@@ -77,10 +77,12 @@ async def incoming_message_f(client, message):
                         else:
                             file_name = url_parts[1]
                     except:
+                        print(message)
                         file_name = [fi for fi in file if fi is not None][0].file_name
                 else:
                     file_name = [fi for fi in file if fi is not None][0].file_name
             except:
+                print(message)
                 file_name = [fi for fi in file if fi is not None][0].file_name
         if not rep_mess.media or str(file_name).lower().endswith(".torrent"):
             dl_url, cf_name, _, _ = await extract_link(message.reply_to_message, "LEECH")
