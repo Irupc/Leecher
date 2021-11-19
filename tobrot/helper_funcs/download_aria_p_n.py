@@ -196,6 +196,7 @@ async def call_apropriate_function(
     is_file,
     user_message,
     client,
+    irupc_file_name,
 ):
     if not is_file:
         if incoming_link.lower().startswith("magnet:"):
@@ -262,8 +263,11 @@ async def call_apropriate_function(
             to_upload_file = to_upload_file.replace("/app/","").replace("/app","").replace("app/","")
             print(f"--> UPLOAD FILE MOD --> {to_upload_file}")
             if os.path.isfile(to_upload_file):
+                if irupc_file_name:
+                    fName_mod = '.'.join(word for word in irupc_file_name.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
+                else:
+                    fName_mod = '.'.join(word for word in to_upload_file.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
                 randletter = random.choice(string.ascii_letters)
-                fName_mod = '.'.join(word for word in to_upload_file.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
                 fName_mod = '.'.join(word for word in fName_mod.replace("_", " ").split(' ') if not word.startswith('@'))
                 fName_mod = fName_mod.replace("PSA", randletter).replace("YIFY", randletter).replace("GalaxyRG", randletter).replace("[YTS.LT]", randletter).replace("[YTS.MX]", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("1tamilmv", randletter).replace("tamilmv", randletter).replace("x265lk", randletter)
                 os.rename(to_upload_file,
