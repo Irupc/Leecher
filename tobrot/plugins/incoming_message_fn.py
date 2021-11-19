@@ -71,7 +71,7 @@ async def incoming_message_f(client, message):
             file = [rep_mess.document, rep_mess.video, rep_mess.audio]
             try:
                 if "|" in message.text:
-                    irupc_file_name = message.command[2]
+                    irupc_file_name = message.text.replace("/gleech | ","").replace("/gleech |","")
                     file_name = [fi for fi in file if fi is not None][0].file_name
                 else:
                     file_name = [fi for fi in file if fi is not None][0].file_name
