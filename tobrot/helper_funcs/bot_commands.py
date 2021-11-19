@@ -1,5 +1,6 @@
 class _BotCommands:
     def __init__(self):
+        self.GdriveCommand = 'gleech'
         self.LeechCommand = 'leech'
         self.ExtractCommand = 'extract'
         self.ArchiveCommand = 'archive'
