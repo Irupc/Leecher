@@ -51,9 +51,6 @@ async def incoming_purge_message_f(client, message):
 
 
 async def incoming_message_f(client, message):
-    print("---- MSG -----")
-    print(message)
-    print("---- MSG END-----")
     """/leech command or /gleech command"""
     user_command = message.command[0]
     g_id = message.from_user.id
@@ -67,24 +64,22 @@ async def incoming_message_f(client, message):
     is_file = False
     dl_url = ''
     cf_name = ''
+    irupc_file_name = ''
     if rep_mess:
         file_name = ''
         if rep_mess.media:
             file = [rep_mess.document, rep_mess.video, rep_mess.audio]
             try:
                 if "|" in message.text:
-                    try:
-                        url_parts = message.text.split("|")
-                        if url_parts[1] == "" or  url_parts[1] == " ":
-                            file_name = [fi for fi in file if fi is not None][0].file_name
-                        else:
-                            file_name = url_parts[1]
-                    except:
-                        file_name = [fi for fi in file if fi is not None][0].file_name
+                    irupc_file_name = message.command[2]
+                    file_name = [fi for fi in file if fi is not None][0].file_name
                 else:
                     file_name = [fi for fi in file if fi is not None][0].file_name
             except:
                 file_name = [fi for fi in file if fi is not None][0].file_name
+            print(file_name)
+            print("--- IP File NAME ---")
+            print(irupc_file_name)
         if not rep_mess.media or str(file_name).lower().endswith(".torrent"):
             dl_url, cf_name, _, _ = await extract_link(message.reply_to_message, "LEECH")
             LOGGER.info(dl_url)
@@ -154,6 +149,7 @@ async def incoming_message_f(client, message):
             is_file,
             message,
             client,
+            irupc_file_name,
         )
         if not sagtus:
             # if FAILED, display the error message
