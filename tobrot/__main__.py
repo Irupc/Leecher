@@ -73,6 +73,7 @@ from tobrot.plugins.status_message_fn import (
 )
 
 botcmds = [
+        (f'{BotCommands.GdriveCommand}','☁️ Upload to Google Drive'),
         (f'{BotCommands.LeechCommand}','📨 [Reply] Leech any Torrent/ Magnet/ Direct Link '),
         (f'{BotCommands.ExtractCommand}', '🔐 Unarchive items . .'),
         (f'{BotCommands.ArchiveCommand}','🗜 Archive as .tar.gz acrhive... '),
