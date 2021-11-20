@@ -76,19 +76,19 @@ async def incoming_message_f(client, message):
                 try:
                     if "//" in message.text:
                         if "\n" in rep_mess.caption:
-			    irupc_file_name = rep_mess.caption.split("\n")[0]
+				            irupc_file_name = rep_mess.caption.split("\n")[0]
                         else:
-			    irupc_file_name = rep_mess.caption
-			irupc_file_name = f"{irupc_file_name.replace('.'+exten,'')}.{exten}"
+			                irupc_file_name = rep_mess.caption
+			        irupc_file_name = f"{irupc_file_name.replace('.'+exten,'')}.{exten}"
                 except:
                     print("No Caption Detected")
                 if "|" in message.text:
                     irupc_file_name = message.text.replace("/gleech | ","").replace("/gleech |","")
-		    irupc_file_name = f"{irupc_file_name.replace('.'+exten,'')}.{exten}"
+		            irupc_file_name = f"{irupc_file_name.replace('.'+exten,'')}.{exten}"
                 else:
                     print("Nothing")
             except:
-		print("Nothing")
+		        print("Nothing")
             print(file_name)
             print("--- IP File NAME ---")
             print(irupc_file_name)
