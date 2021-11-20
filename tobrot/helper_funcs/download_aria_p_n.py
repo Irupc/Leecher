@@ -280,7 +280,9 @@ async def call_apropriate_function(
                     LOGGER.info(files)
                     for org in files:
                         p_name = f"{root}/{org}"
-                        n_name = f"{root}/{CUSTOM_FILE_NAME}{org}"
+                        randletter = random.choice(string.ascii_letters)
+                        org_mod = org.replace("PSA", randletter).replace("pahe.in", randletter).replace("pahe.ph", randletter).replace("pahe", randletter).replace("ION10", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("x265lk", randletter).replace("MCF", randletter).replace("'", "").replace(",", ".").replace("\"", "")
+                        n_name = f"{root}/{CUSTOM_FILE_NAME}{org_mod}"
                         os.rename(p_name, n_name)
                 to_upload_file = to_upload_file
 
