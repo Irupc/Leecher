@@ -69,23 +69,26 @@ async def incoming_message_f(client, message):
         file_name = ''
         if rep_mess.media:
             file = [rep_mess.document, rep_mess.video, rep_mess.audio]
+            file_name = [fi for fi in file if fi is not None][0].file_name
+            file_nam_arrr = file_name.split(".")
+            exten = file_nam_arrr[len(file_nam_arrr)-1]
             try:
                 try:
                     if "//" in message.text:
                         if "\n" in rep_mess.caption:
-	                        irupc_file_name = rep_mess.caption.split("\n")[0]
+	                	irupc_file_name = rep_mess.caption.split("\n")[0]
                         else:
-                            irupc_file_name = rep_mess.caption
-                        file_name = [fi for fi in file if fi is not None][0].file_name
+				irupc_file_name = rep_mess.caption
+			irupc_file_name = f"{irupc_file_name.replace('.'+exten,'')}.{exten}"
                 except:
                     print("No Caption Detected")
                 if "|" in message.text:
                     irupc_file_name = message.text.replace("/gleech | ","").replace("/gleech |","")
-                    file_name = [fi for fi in file if fi is not None][0].file_name
+		    irupc_file_name = f"{irupc_file_name.replace('.'+exten,'')}.{exten}"
                 else:
-                    file_name = [fi for fi in file if fi is not None][0].file_name
+                    print("Nothing")
             except:
-                file_name = [fi for fi in file if fi is not None][0].file_name
+		print("Nothing")
             print(file_name)
             print("--- IP File NAME ---")
             print(irupc_file_name)
