@@ -269,7 +269,7 @@ async def call_apropriate_function(
                     fName_mod = '.'.join(word for word in to_upload_file.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
                 randletter = random.choice(string.ascii_letters)
                 fName_mod = '.'.join(word for word in fName_mod.replace("_", " ").split(' ') if not word.startswith('@'))
-                fName_mod = fName_mod.replace("PSA", randletter).replace("YIFY", randletter).replace("GalaxyRG", randletter).replace("[YTS.LT]", randletter).replace("[YTS.MX]", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("1tamilmv", randletter).replace("tamilmv", randletter).replace("x265lk", randletter)
+                fName_mod = fName_mod.replace("PSA", randletter).replace("YIFY", randletter).replace("GalaxyRG", randletter).replace("[YTS.LT]", randletter).replace("[YTS.MX]", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("x265lk", randletter).replace("'", "").replace(",", ".").replace("\"", "")
                 os.rename(to_upload_file,
                           f"{CUSTOM_FILE_NAME}{fName_mod}")
                 to_upload_file = f"{CUSTOM_FILE_NAME}{fName_mod}"
