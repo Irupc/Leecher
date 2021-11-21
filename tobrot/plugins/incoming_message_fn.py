@@ -89,9 +89,6 @@ async def incoming_message_f(client, message):
                     print("Nothing")
             except:
                 print("Nothing")
-            print(file_name)
-            print("--- IP File NAME ---")
-            print(irupc_file_name)
         if not rep_mess.media or str(file_name).lower().endswith(".torrent"):
             dl_url, cf_name, _, _ = await extract_link(message.reply_to_message, "LEECH")
             LOGGER.info(dl_url)
