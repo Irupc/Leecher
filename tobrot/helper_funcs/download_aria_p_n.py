@@ -258,10 +258,7 @@ async def call_apropriate_function(
 
     if to_upload_file:
         if CUSTOM_FILE_NAME:
-            print(to_upload_file)
-            print("^^^UPLOAD FILE^^^")
             to_upload_file = to_upload_file.replace("/app/","").replace("/app","").replace("app/","")
-            print(f"--> UPLOAD FILE MOD --> {to_upload_file}")
             if os.path.isfile(to_upload_file):
                 if irupc_file_name:
                     fName_mod = '.'.join(word for word in irupc_file_name.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
@@ -269,19 +266,17 @@ async def call_apropriate_function(
                     fName_mod = '.'.join(word for word in to_upload_file.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
                 randletter = random.choice(string.ascii_letters)
                 fName_mod = '.'.join(word for word in fName_mod.replace("_", " ").split(' ') if not word.startswith('@'))
-                fName_mod = fName_mod.replace("PSA", randletter).replace("YIFY", randletter).replace("GalaxyRG", randletter).replace("[YTS.LT]", randletter).replace("[YTS.MX]", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("x265lk", randletter).replace("MCF", randletter).replace("'", "").replace(",", ".").replace("\"", "")
+                fName_mod = fName_mod.replace("PSA", randletter).replace("pahe.in", randletter).replace("pahe.ph", randletter).replace("Pahe.in", randletter).replace("Pahe.ph", randletter).replace("pahe", randletter).replace("Pahe", randletter).replace("YIFY", randletter).replace("GalaxyRG", randletter).replace("[YTS.LT]", randletter).replace("[YTS.MX]", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("x265lk", randletter).replace("MCF", randletter).replace("'", "").replace(",", ".").replace("\"", "")
                 os.rename(to_upload_file,
                           f"{CUSTOM_FILE_NAME}{fName_mod}")
                 to_upload_file = f"{CUSTOM_FILE_NAME}{fName_mod}"
-                print("---UPLOAD FILE---")
-                print(to_upload_file)
             else:
                 for root, _, files in os.walk(to_upload_file):
                     LOGGER.info(files)
                     for org in files:
                         p_name = f"{root}/{org}"
                         randletter = random.choice(string.ascii_letters)
-                        org_mod = org.replace("PSA", randletter).replace("pahe.in", randletter).replace("pahe.ph", randletter).replace("pahe", randletter).replace("ION10", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("x265lk", randletter).replace("MCF", randletter).replace("'", "").replace(",", ".").replace("\"", "")
+                        org_mod = org.replace("PSA", randletter).replace("psa", randletter).replace("pahe.in", randletter).replace("pahe.ph", randletter).replace("Pahe.in", randletter).replace("Pahe.ph", randletter).replace("pahe", randletter).replace("Pahe", randletter).replace("ION10", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("x265lk", randletter).replace("MCF", randletter).replace("'", "").replace(",", ".").replace("\"", "")
                         n_name = f"{root}/{CUSTOM_FILE_NAME}{org_mod}"
                         os.rename(p_name, n_name)
                 to_upload_file = to_upload_file
