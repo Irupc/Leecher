@@ -25,6 +25,7 @@ from tobrot import (
     ARIA_TWO_STARTED_PORT,
     AUTH_CHANNEL,
     CUSTOM_FILE_NAME,
+    REPLACE_WORDS,
     DOWNLOAD_LOCATION,
     EDIT_SLEEP_TIME_OUT,
     LOGGER,
@@ -266,7 +267,9 @@ async def call_apropriate_function(
                     fName_mod = '.'.join(word for word in to_upload_file.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
                 randletter = random.choice(string.ascii_letters)
                 fName_mod = '.'.join(word for word in fName_mod.replace("_", " ").split(' ') if not word.startswith('@'))
-                fName_mod = fName_mod.replace("PSA", randletter).replace("pahe.in", randletter).replace("pahe.ph", randletter).replace("Pahe.in", randletter).replace("Pahe.ph", randletter).replace("pahe", randletter).replace("Pahe", randletter).replace("YIFY", randletter).replace("GalaxyRG", randletter).replace("[YTS.LT]", randletter).replace("[YTS.MX]", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("x265lk", randletter).replace("MCF", randletter).replace("'", "").replace(",", ".").replace("\"", "")
+                for word in REPLACE_WORDS:
+                    fName_mod = fName_mod.replace(word, randletter)
+                fName_mod = fName_mod.replace("'", "").replace(",", ".").replace("\"", "")
                 os.rename(to_upload_file,
                           f"{CUSTOM_FILE_NAME}{fName_mod}")
                 to_upload_file = f"{CUSTOM_FILE_NAME}{fName_mod}"
@@ -276,7 +279,9 @@ async def call_apropriate_function(
                     for org in files:
                         p_name = f"{root}/{org}"
                         randletter = random.choice(string.ascii_letters)
-                        org_mod = org.replace("PSA", randletter).replace("psa", randletter).replace("pahe.in", randletter).replace("pahe.ph", randletter).replace("Pahe.in", randletter).replace("Pahe.ph", randletter).replace("pahe", randletter).replace("Pahe", randletter).replace("ION10", randletter).replace("YTS", randletter).replace("[FilmsZilla.com]", randletter).replace("x265lk", randletter).replace("MCF", randletter).replace("'", "").replace(",", ".").replace("\"", "")
+                        for word in REPLACE_WORDS:
+                            org = org.replace(word, randletter)
+                        org_mod = org.replace("'", "").replace(",", ".").replace("\"", "")
                         n_name = f"{root}/{CUSTOM_FILE_NAME}{org_mod}"
                         os.rename(p_name, n_name)
                 to_upload_file = to_upload_file
