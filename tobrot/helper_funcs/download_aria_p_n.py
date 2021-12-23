@@ -287,8 +287,14 @@ async def call_apropriate_function(
                 to_upload_file = to_upload_file
 
     if cstom_file_name:
-        os.rename(to_upload_file, cstom_file_name)
-        to_upload_file = cstom_file_name
+        fName_mod = '.'.join(word for word in cstom_file_name.replace(".", " ").replace(" - ", " ").replace("-", " ").split(' ') if not word.startswith('@'))
+        randletter = random.choice(string.ascii_letters)
+        fName_mod = '.'.join(word for word in fName_mod.replace("_", " ").split(' ') if not word.startswith('@'))
+        for word in REPLACE_WORDS:
+            fName_mod = fName_mod.replace(word, randletter)
+        fName_mod = fName_mod.replace("'", "").replace(",", ".").replace("\"", "")
+        os.rename(to_upload_file, f"{CUSTOM_FILE_NAME}{fName_mod}")
+        to_upload_file = f"{CUSTOM_FILE_NAME}{fName_mod}
     #
     response = {}
     #LOGGER.info(response)
