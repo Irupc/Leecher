@@ -294,7 +294,7 @@ async def call_apropriate_function(
             fName_mod = fName_mod.replace(word, randletter)
         fName_mod = fName_mod.replace("'", "").replace(",", ".").replace("\"", "")
         os.rename(to_upload_file, f"{CUSTOM_FILE_NAME}{fName_mod}")
-        to_upload_file = f"{CUSTOM_FILE_NAME}{fName_mod}
+        to_upload_file = f"{CUSTOM_FILE_NAME}{fName_mod}"
     #
     response = {}
     #LOGGER.info(response)
